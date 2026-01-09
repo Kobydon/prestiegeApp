@@ -26,7 +26,7 @@
             <!-- Account Receivable Table Section -->
             <div *ngIf="paymentForm.value.dates" id="receivable-table">
               <h5 class="text-secondary">Account Receivable</h5>
-
+<!-- 
               <p>Hotel </p>
               <table class="table table-bordered">
                 <thead class="table-light">
@@ -38,31 +38,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Room Charges (Amount) -->
+                 
                   <tr *ngFor="let payment of paymentList">
                     <td>{{ payment.payment_date | date: 'yyyy-MM-dd'}}</td>
                     <td>{{ payment.name }} - Room Booking</td>
                     <td>{{ payment.amount }}</td>
-                    <td>{{ payment.balance }}</td> <!-- Balance (Amount Owed) -->
+                    <td>{{ payment.balance }}</td> 
                   </tr>
   
-                  <!-- Purchases (Amount Owed) -->
-                  <!-- <tr *ngFor="let purchase of purchaseList">
-                    <td>{{ purchase.request_date | date: 'yyyy-MM-dd' }}</td>
-                    <td>{{ purchase.item }} - Purchase</td>
-                    <td>{{ purchase.total_cost }}</td>
-                    <td>{{ (totalAmount - totalPurchases) | number }}</td> 
-                  </tr>
-   -->
-                  <!-- Closing Balance -->
                   <tr class="bg-light">
                     <td colspan="3" class="text-end"><strong>Total Balance</strong></td>
-                    <td><strong>GH₵{{ balance| number }}</strong></td> <!-- Closing Balance -->
+                    <td><strong>GH₵{{ balance| number }}</strong></td> 
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
 
-              <p>Restaurant & Bar</p>
+            
 
 
                  
@@ -74,7 +65,9 @@
                   <th>Quantity</th>
                   <th>Price</th>
                   <th>Subtotal</th>
-                  <th>Waiter</th>
+                  <th>Attendant</th>
+                   <th>Customer</th>
+                   <th>phone</th>
                   <th>Status</th>
                 </tr>
               </thead>
@@ -93,6 +86,8 @@
                     <td>GH₵{{ item.price }}</td>
                     <td>GH₵{{ item.qty * item.price }}</td>
                     <td>{{ order.waiter }}</td>
+                    <td>{{ item.custoner }}</td>
+                    <td>{{ order.phone }}</td>
                     <td>{{ order.status }}</td>
                   </tr>
                 </ng-container>

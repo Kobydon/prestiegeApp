@@ -32,6 +32,9 @@ displayStyleManager
 displayStyleCustomer;
 isHeldOrder: boolean = false;
 customers:any;
+searchTerm: string = '';
+searchTermOrder: string = '';
+
   constructor(public cartService: CartService, private userService: userService,private fb:FormBuilder,private guestService:GuestService,private router:Router,
     private toatsr:ToastrService
   ) {
@@ -48,6 +51,8 @@ customers:any;
        customer_new_id :['',Validators.required],
        firstname: ['', Validators.required],
        lastname: ['', Validators.required],
+       phone: ['', Validators.required],
+       search_order: ['', Validators.required]
     })
   }
 
@@ -67,6 +72,8 @@ customers:any;
   });
   }
 
+
+  
 calDiscount(formValue: any): void {
   const discount = Number(formValue.discount) || 0; // percentage
   const totalWithoutDiscount = this.cartItems.reduce(
@@ -86,7 +93,7 @@ calDiscount(formValue: any): void {
       if (res && res.length > 0) {
         this.user = res;
         console.log("User Loaded:", this.user);
-        this.loadHeldCarts();
+        // this.loadHeldCarts();
         this.clearCart();
       } else {
         console.warn("User not found.");
@@ -130,8 +137,8 @@ calDiscount(formValue: any): void {
   async addCustomer(record){
          try{
           var res = await this.guestService.addCustomer(record);
-          if(res) alert("successful");
-        }catch(err){alert(err)}
+          if(res) alert("successful"); this.getCustomers(); this.closePopup()
+          }catch(err){alert(err)}
   }
 
  async getCustomers() {
@@ -147,6 +154,11 @@ calDiscount(formValue: any): void {
     alert('Failed to load customers');
   }
 }
+selectCustomer(customerId: number) {
+  this.createForm.patchValue({ customer: customerId });
+  // this.closePopup();
+}
+
 
 generateId() {
   try{
@@ -451,6 +463,54 @@ loadHeldCartAll(): void {
 
 
 
+    Credit() {
+    const orderData = {
+      cartItems: this.cartItems,
+      total: this.total,
+      // id:this.createForm.value.id2,
+      method : this.createForm.value.method,
+      cashier :this.createForm.value.cashier,
+     
+      table: this.createForm.value.table,
+       discount:this.createForm.value.discount,
+       customer:this.createForm.value.customer,
+       phone:this.createForm.value.phone
+    };
+
+    console.log("🛒 Cart Items Being Sent:", JSON.stringify(orderData.cartItems, null, 2));
+ if(this.createForm.value.customer==""){
+      alert("please enter customer's ID")
+    }
+    else{
+    this.cartService.Credit(orderData).subscribe(
+      (response) => {
+        this.clearCart();
+        this.loadHeldCarts();
+        this.closePopup();
+        this.createForm.get('username')?.reset();
+        // this.cartService.clearCart(this.user?.id);
+        // alert(`Payment successful! Order #${response.id} has been placed.`);
+
+        this.printBill();
+        
+        this.cashier=false;
+        this.admin=false
+      },
+      (error) => {
+       let errorMessage = "Payment failed. Please try again.";
+
+  if (error?.error?.error) {
+    errorMessage = error.error.error;  // Flask sends { "error": "..." }
+  }
+
+  alert(errorMessage);
+      }
+    );
+  }
+  }
+
+
+
 
 
   async  startSession(){
@@ -536,11 +596,16 @@ loadHeldCartAll(): void {
       method : this.createForm.value.method,
       table:this.createForm.value.table,
       cashier:this.createForm.value.cashier,
-      customer:this.createForm.value.customer
+      customer:this.createForm.value.customer,
+      phone:this.createForm.value.phone,
+      discount:this.createForm.value.discount
     };
 
     console.log("🛒 Cart Items Being Sent:", JSON.stringify(orderData.cartItems, null, 2));
-
+    if(this.createForm.value.customer==""){
+      alert("please enter customer's ID")
+    }
+else{
     this.cartService.payOrderTwoAll(orderData).subscribe(
       (response) => {
         this.clearCart();
@@ -567,6 +632,74 @@ loadHeldCartAll(): void {
       }
     );
   }
+  }
+  
+async searchItems(term: string) {
+  term = term.trim().toLowerCase();
+
+  try {
+    const ad = { find: term };
+    const res = await this.guestService.searchDiscount(ad);
+
+    // SAFETY CHECKS
+    if (!res || !Array.isArray(res) || res.length === 0) {
+      console.log("No coupon found.");
+      return;
+    }
+
+    const coupon = res[0];
+
+    // Check if coupon_value exists
+    if (coupon.coupon_value && parseInt(coupon.coupon_value) > 0) {
+      this.createForm.patchValue({ discount: parseInt(coupon.coupon_value) });
+
+      if (confirm("Coupon found, apply now?")) {
+        this.calDiscount(this.createForm.value.discount);
+      }
+    }
+  } catch (error) {
+    console.error('Error searching items:', error);
+  }
+}
+
+
+searchItemsOrder(): void {
+  const cartId={
+    id:this.createForm.value.search_order
+  }
+  
+   if(this.createForm.value.search_order!=""){
+
+  this.cartService.loadHeldOrder(cartId.id).subscribe(
+    (response) => {
+      console.log("Cart loaded:", response);
+      // alert(`Loaded cart #${cartId}!`);
+
+      if (response && response.items) {
+        this.createForm.patchValue({ id2: cartId });
+        this.total = response.total || 0;
+        this.isHeldOrder = response.one_time ? true : false;
+
+        // ✅ Update loFcalStorage and emit new cart via BehaviorSubject
+        this.cartService.updateCart(response.items);
+      } else {
+        console.warn("Loaded cart does not contain items.");
+        this.cartService.updateCart([]); // Clear cart
+        this.total = 0;
+        this.isHeldOrder = false;
+      }
+    },
+    (error) => {
+      console.error("Error loading cart:", error);
+      console.log("Failed to load cart. Please try again.");
+      this.isHeldOrder = false;
+    }
+  );
+}
+
+else{
+  this.clearCart();
+}}
 
   printReceipts(order: any) {
   let items: any[] = [];
@@ -651,11 +784,13 @@ loadHeldCartAll(): void {
         </style>
       </head>
       <body onload="window.print(); window.close();">
-        <div class="header">Longford</div>
+        <div class="header">Longford Prestige </div>
         <div class="info">Krofrom KUMASI</div>
+        <div class="info">P.O BOX SE 2580, Kumasi</div>
+        <div class="info">0243277506</div>
         <div class="info">Attendant: ${this.user[0]?.firstname +' '+ this.user[0]?.lastname}</div>
         <div class="line"></div>
-        <div class="info"><strong>Customer Receipt</strong></div>
+        <div class="info"><strong>Customer Invoice</strong></div>
         <div class="info">Order ID: ${order.id}</div>
         <div class="info">Date: ${new Date(order.created_at).toLocaleString()}</div>
         <div class="line"></div>
@@ -836,8 +971,10 @@ loadHeldCartAll(): void {
         </style>
       </head>
       <body onload="window.print(); window.close();">
-        <div class="header">Longford city</div>
-        <div class="info">Krofrom, KUMASI</div>
+        <div class="header">Longford Prestige </div>
+        <div class="info">Krofrom KUMASI</div>
+        <div class="info">P.O BOX SE 2580, Kumasi</div>
+        <div class="info">0243277506</div>
         <div class="info">Attendant: ${this.user[0]?.firstname +' '+ this.user[0]?.lastname}</div>
        <div class="line"> </div>
         <div class="info"><strong>INVOICE</strong></div>

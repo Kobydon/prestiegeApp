@@ -69,6 +69,10 @@ import { OutsideStockSideComponent } from 'app/outside-stock-side/outside-stock-
 import { StockSheetComponent } from 'app/stock-sheet/stock-sheet.component';
 import { PrintVorcherComponent } from 'app/print-vorcher/print-vorcher.component';
 import { CanceledOrderComponent } from 'app/canceled-order/canceled-order.component';
+import { CustomersComponent } from 'app/customers/customers.component';
+import { AccountGroupComponent } from 'app/account-group/account-group.component';
+import { AddAccountComponent } from 'app/add-account/add-account.component';
+import { BalancesheetComponent } from 'app/balancesheet/balancesheet.component';
 
 
     
@@ -134,7 +138,7 @@ import { CanceledOrderComponent } from 'app/canceled-order/canceled-order.compon
     DailyIncomeReportDatesBetweenComponent,
     ItemComponent,ItemCategoryComponent,ItemGroupComponent,ItemFamilyComponent,FinancialOverviewComponent,AllSessionsComponent,
     StoreComponent,StockComponent,DepartmentsComponent,TransferStockComponent,VendorComponent,PurchaseOrderComponent,ReturnRequestComponent,
-    AddEventPaymentComponent,OutsideStockSideComponent,CanceledOrderComponent
+    AddEventPaymentComponent,OutsideStockSideComponent,CanceledOrderComponent,CustomersComponent,AccountGroupComponent,AddAccountComponent,BalancesheetComponent
 
 
 

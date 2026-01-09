@@ -52,14 +52,14 @@ export class DashboardComponent implements OnInit {
     //   this.getExchangeRates();
 
     // },7000);
-    this.getGust();
+    // this.getGust();
 
   
     // this.interval= setInterval(()=>{
     //   this.getBookingList();
 
     // },1000);
-    this.getRoom();
+    // this.getRoom();
     this.getUser();
   
   }

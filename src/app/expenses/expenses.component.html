@@ -18,6 +18,17 @@
                               
                         </div>
                     </div>
+                                 <form [formGroup]="itemForm" class="mb-4">
+    <label for="">Filter</label>
+            <select formControlName="name" id="" (ngModelChange)="findAccountGroup()">
+          <option  *ngFor="let item of findList" value="{{item.name}}">{{item.name}}</option>
+          
+        
+        
+        
+        </select>
+        </form>
+
                     <div class="table-responsive">
                       <form  [formGroup]="createForm">
                         <input type="date" class="form-control" style="width:auto;"
@@ -169,6 +180,17 @@
                     </div>
                   </div>
 
+                                    <div class="col-md-5 pr-1">
+                        <div class="form-group">
+                          <label>Group</label>
+                                            <select formControlName="subcategory" class="form-control">
+                                         
+                    <!-- <option value="uncategorized" selected>Uncategorized</option>  -->
+                    <option *ngFor="let item of itemsList" value="{{item.name}}">{{item.name}}</option>
+                    </select>
+
+                        </div>
+                      </div>
 
                   </div>
 

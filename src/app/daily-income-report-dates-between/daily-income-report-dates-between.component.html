@@ -85,7 +85,7 @@
           Download PDF
         </button>
         <button class="btn btn-success" (click)="filterByMostPayment()">Filter by Most Payment</button>
-        <button class="btn btn-info" (click)="filterByMostPaymentCustomer()">Filter by Most Payment</button>
+        <button class="btn btn-info" (click)="filterByMostPaymentCustomer()">Filter by Most Customer</button>
       </div>
 
       <!-- Daily Report Display -->
@@ -113,17 +113,22 @@
                   <th>Amount (₵)</th>
                   <th>Discount</th>
                   <th>Customer</th>
+                  <th>Phone</th>
                   <th>Cashier</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of incomeReport">
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.amount | currency: '₵' }}</td>
-                  <td>{{ item.discount }}</td>
-                  <td>{{ item.customer }}</td>
-                  <td>{{item.cashier}}</td>
-                </tr>
+                <tr *ngFor="let item of order.items">
+                <td>{{ item.name }}</td>
+                <td>{{ item.qty }}</td>
+                <td>GH₵{{ item.price }}</td>
+                <td>GH₵{{ item.qty * item.price }}</td>
+                <td>{{ order.waiter }}</td>
+                <td>{{ order.customer }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.status }}</td>
+              </tr>
+
               </tbody>
               <tfoot>
                 <tr class="font-weight-bold">

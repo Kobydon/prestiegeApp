@@ -130,6 +130,19 @@ addExpense(dep:any) {
       return  lastValueFrom (  this.http.post(this.guestUrl + '/guest/add_item', dep, httpOptions));
     } 
 
+     addAccountGroup(dep:any) {
+    //console.log(guest);
+      return  lastValueFrom (  this.http.post(this.guestUrl + '/guest/add_account_group', dep, httpOptions));
+    } 
+
+
+       addAccount(dep:any) {
+    //console.log(guest);
+      return  lastValueFrom (  this.http.post(this.guestUrl + '/guest/add_account', dep, httpOptions));
+    } 
+
+
+    
 
     getFood(id: any) {
       const url = `${this.guestUrl}/guest/get_food/${id}`;
@@ -290,6 +303,31 @@ addExpense(dep:any) {
               return  lastValueFrom (  this.http.get<any[]>(this.guestUrl + '/guest/get_group_list'));
             }
 
+                getAccountGroupList() {
+            //console.log(guest);
+              return  lastValueFrom (  this.http.get<any[]>(this.guestUrl + '/guest/get_account_group_list'));
+            }
+
+
+              getAccountList() {
+            //console.log(guest);
+              return  lastValueFrom (  this.http.get<any[]>(this.guestUrl + '/guest/get_account_list'));
+            }
+
+            
+                GroupSorted() {
+            //console.log(guest);
+              return  lastValueFrom (  this.http.get<any[]>(this.guestUrl + '/guest/get_account_group_list_sorted'));
+            }
+            
+                AccountSorted() {
+            //console.log(guest);
+              return  lastValueFrom (  this.http.get<any[]>(this.guestUrl + '/guest/get_account_list_sorted'));
+            }
+            
+            
+            
+
             getSessionList() {
               //console.log(guest);
                 return  lastValueFrom (  this.http.get<any[]>(this.guestUrl + '/guest/get_all_session'));
@@ -299,6 +337,20 @@ addExpense(dep:any) {
               //console.log(guest);
                 return  lastValueFrom (  this.http.put(this.guestUrl + '/guest/update_vendor', dep, httpOptions));
               }   
+
+                   updateACcountGroup(dep:any) {
+              //console.log(guest);
+                return  lastValueFrom (  this.http.put(this.guestUrl + '/guest/update_account_group', dep, httpOptions));
+              }   
+
+
+                updateACcount(dep:any) {
+              //console.log(guest);
+                return  lastValueFrom (  this.http.put(this.guestUrl + '/guest/update_account', dep, httpOptions));
+              }   
+
+              
+              
 
                
               confirmOrder(dep:any) {
@@ -552,6 +604,29 @@ submitMultiplePurchases(cartItems: any[]) {
   }
   
 
+  deleteAccountGroup(id:number) {
+	  if (confirm("Are you sure to delete?")) {
+		// const id = typeof ad === 'number' ? ad : ad.id;
+		const url = `${this.guestUrl}/guest/delete_account_group/${id}`;
+		return  lastValueFrom(  this.http.delete(url, httpOptions))
+	  }
+	  return of({});
+  }
+  
+
+  
+  deleteAccount(id:number) {
+	  if (confirm("Are you sure to delete?")) {
+		// const id = typeof ad === 'number' ? ad : ad.id;
+		const url = `${this.guestUrl}/guest/delete_account/${id}`;
+		return  lastValueFrom(  this.http.delete(url, httpOptions))
+	  }
+	  return of({});
+  }
+
+
+  
+
 
   deleteGop(id:number) {
 	  if (confirm("Are you sure to delete?")) {
@@ -681,6 +756,29 @@ submitMultiplePurchases(cartItems: any[]) {
     searchIncomeBudgetDates(d){
       return  lastValueFrom(  this.http.post(this.guestUrl + '/guest/search_income_budget_dates', d, httpOptions));
     }
+
+          
+    findAccountGroup(d){
+      return  lastValueFrom(  this.http.post(this.guestUrl + '/guest/search_expense_group', d, httpOptions));
+    }
+
+getBalanceSheet(data: any) {
+  return this.http.post<any>(this.guestUrl + '/guest/balance_sheet', data);
+}
+
+            
+    findExpenseGroup(d){
+      return  lastValueFrom(  this.http.post(this.guestUrl + '/guest/search_account_group', d, httpOptions));
+    }
+
+    
+
+
+        findAccount(d){
+      return  lastValueFrom(  this.http.post(this.guestUrl + '/guest/search_account', d, httpOptions));
+    }
+
+    
 
 
     searchChefDates(d){
@@ -833,6 +931,15 @@ submitMultiplePurchases(cartItems: any[]) {
       return  lastValueFrom(  this.http.post(this.guestUrl + '/guest/search_budget_dates', d, httpOptions));
     }
 
+    searchItem(d){
+       return  lastValueFrom(  this.http.post(this.guestUrl + '/guest/search_item', d, httpOptions));
+
+    }
+
+     searchDiscount(d){
+       return  lastValueFrom(  this.http.post(this.guestUrl + '/guest/search_discount', d, httpOptions));
+
+    }
     
         
     searchIncomeDatesTwo(d){
@@ -1123,6 +1230,21 @@ submitMultiplePurchases(cartItems: any[]) {
     getPurchaseRequestsByCartId(cartId: number) {
     return this.http.get<any[]>(`http://192.168.10.20:5000/guest/get_purchase_by_cart/${cartId}`);
 }
+
+//  getCustomers(): Observable<any> {
+//     return this.http.get<any>(`${this.guestUrl}/get_customers`);
+//   }
+
+  // Delete a customer
+  deleteCustomer(customerId: number): Observable<any> {
+    return this.http.delete<any>(`${this.guestUrl}/guest/delete_customer/${customerId}`);
+  }
+
+  // Apply discount coupon
+ applyCoupon(customerId: number, discount: number): Observable<any> {
+    return this.http.post<any>(`${this.guestUrl}/apply_coupon/${customerId}`, { discount });
+  }
+
 }
 
 

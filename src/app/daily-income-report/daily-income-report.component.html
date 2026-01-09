@@ -63,7 +63,7 @@
         <button class="btn btn-primary mr-2" (click)="printToPdf()">Print</button>
         <button id="pdfBtn" class="btn btn-secondary" (click)="downloadPdf()">Download PDF</button>
         <button class="btn btn-success" (click)="filterByMostPayment()">Filter by Most Payment</button>
-        <button class="btn btn-info" (click)="filterByMostPaymentCustomer()">Filter by Most Payment</button>
+        <button class="btn btn-info" (click)="filterByMostPaymentCustomer()">Filter by Most Customer</button>
       </div>
 
       <!-- Daily Report Display -->
@@ -87,6 +87,7 @@
                       <th>Amount (₵)</th>
                       <th>Discount</th>
                       <th>Customer</th>
+                      <th>Phone</th>
                       <th>Method</th>
                       <th>Cashier</th>
                     </tr>
@@ -97,6 +98,7 @@
                       <td>{{ item.amount | currency:'₵' }}</td>
                         <td>{{ item.discount }}</td>
                         <td>{{ item.customer }}</td>
+                        <td>{{ item.phone }}</td>
                       <td>{{item.method}}</td>
                       <td>{{item.cashier}}</td>
                     </tr>

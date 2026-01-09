@@ -98,7 +98,7 @@ export class SignInComponent implements OnInit {
     
     this.router.navigate(["/view-order"]);}
 
-    else if(this.user[0]?.roles=="waiter" ||  this.user[0]?.roles=="waitress"){
+    else if(this.user[0]?.roles=="sales" ||  this.user[0]?.roles=="sales personel"){
       localStorage.setItem('isWaiter','true');
       
       this.router.navigate(["/item-list"])

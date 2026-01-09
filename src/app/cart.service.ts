@@ -15,6 +15,8 @@ export class CartService {
   public apiUrl4 = 'http://127.0.0.1:5000/guest/create_orders_two_all';
   public apiUrl2 = 'http://127.0.0.1:5000/guest/create_orders_two';
   public orderUrl = 'http://127.0.0.1:5000/guest';
+  public apiUrl5 = 'http://127.0.0.1:5000/guest/credit';
+  
   
   
 
@@ -43,6 +45,11 @@ export class CartService {
   payOrderAll(orderData: any): Observable<any> {
     return this.http.post<any>(this.apiUrl4, orderData);
   }
+
+    Credit(orderData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl5, orderData);
+  }
+  
 
   payOrderTwo(orderData: any): Observable<any> {
     return this.http.post<any>(this.apiUrl2, orderData);
@@ -116,6 +123,9 @@ export class CartService {
   }
 
 
+  loadHeldOrder(holdId: number): Observable<any> {
+    return this.http.get(`${this.orderUrl}/load_held_order_save/${holdId}`);
+  }
 
 
   

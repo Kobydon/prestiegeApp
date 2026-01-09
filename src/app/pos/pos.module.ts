@@ -15,6 +15,10 @@ import { CategoryComponent } from 'app/category/category.component';
 import { PosLayoutComponent } from 'app/pos-layout/pos-layout.component';
 import { ItemListCategoryComponent } from 'app/item-list-category/item-list-category.component';
 import { ItemListVipComponent } from 'app/item-list-vip/item-list-vip.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [ItemListComponent,CheckoutComponent,CategoryComponent,ItemListCategoryComponent,ItemListVipComponent],
@@ -25,6 +29,10 @@ import { ItemListVipComponent } from 'app/item-list-vip/item-list-vip.component'
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+          MatSelectModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
         NgbModule,
    
         BlockUIModule.forRoot({

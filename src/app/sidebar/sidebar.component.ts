@@ -77,8 +77,12 @@ export const ROUTES: RouteInfo[] = [
     { path: '/outside-stock-transfer',    title: ' Add outside stock transfer   ',        icon:'nc-caps-small', class: '' },
      { path: '/print-voucher',    title: ' Add outside stock transfer   ',        icon:'nc-caps-small', class: '' },
       { path: '/canceled-order',    title: ' Canceled Order  ',        icon:'nc-caps-small', class: '' },
+      { path: '/customers',    title: ' Customers  ',        icon:'nc-caps-small', class: '' },
+      { path: '/account-group',    title: ' Account-group  ',        icon:'nc-caps-small', class: '' },
+       { path: '/account',    title: ' Account-group  ',        icon:'nc-caps-small', class: '' },
+        { path: '/balance-sheet',    title: ' Balance-sheet  ',        icon:'nc-caps-small', class: '' },
 
-    
+   
 
 ];
 

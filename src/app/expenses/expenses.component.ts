@@ -44,7 +44,9 @@ export class ExpensesComponent implements OnInit {
   feestypeList:any;
 expenseList:any;
 classList:any;
+  itemsList: any[] = [];
 user:any;
+findList: any[] = [];
   constructor(private fb:FormBuilder,private toastr:ToastrService,private guestService:GuestService,
     private userService:userService) {
 
@@ -60,7 +62,8 @@ user:any;
         date:['',Validators.required],
       
         note:['',Validators.required],
-       dates:['',Validators.required]
+       dates:['',Validators.required],
+            subcategory:['',Validators.required],
        
     })  
      }
@@ -68,11 +71,20 @@ user:any;
   ngOnInit(): void {
     this.getUser();
     this.getExpenseLIst();
+    this.getItemsList();
+    this.GroupSorted();
   }
 
 
 
-
+async getItemsList() {
+      try {
+        const res = await this.guestService.getAccountGroupList();
+        if (res) this.itemsList = res;
+      } catch (error) {
+        this.toastr.error('Error fetching items list');
+      }
+    }
 
   async  adExpense(record){
 
@@ -95,7 +107,7 @@ user:any;
      // guest.image_three= this.base64_string
      try{
        this.loading.start();
-      var res  = await this.guestService.addExpense(d);
+      var res  = await this.guestService.addExpense(record);
       if(res)this.toastr.success(null,"record successfully added ");this.getExpenseLIst();
    
      
@@ -113,8 +125,35 @@ user:any;
     
    
    }
-    
+     async GroupSorted() {
+      try {
+        const res = await this.guestService.GroupSorted();
+        if (res) this.findList = res;
+      } catch (error) {
+        this.toastr.error('Error fetching items list');
+      }
+    }
   
+    async findAccountGroup() {
+  const group = {
+    find: this.createForm.value.name
+  };
+
+  try {
+    // Assuming findAccountGroup is a function that returns a promise
+    const res = await this.guestService.findExpenseGroup(group);
+
+    // Check if the result is an array and assign it to itemsList
+    if (Array.isArray(res)) {
+      this.expenseList = res;
+    } else {
+      alert("Not found or result is not an array");
+    }
+  } catch (error) {
+    console.error('Error finding account group:', error);
+    alert("An error occurred");
+  }
+}
    
   
    async getExpenseLIst(){

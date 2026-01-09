@@ -114,65 +114,24 @@ li{
         </a>
 </li>
       </div>
-
+<!-- 
       <li  >
         <a id="fina" routerLink="all-guest"><i id="fina" class="fa fa-user "  aria-disabled="true" >&nbsp;</i><span>Guest&nbsp;</span>
         
         </a>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a id="fina" style="font-size: small;"  routerLink="refund-list"><i id="fina" class="fa fa-money " >&nbsp;</i>Refund</a>
       </li>
--
-        <li   class="transparent" >
-          <a id="fina" ><i id="fina" class="fa fa-bed " >&nbsp;</i><span>Room &nbsp;</span>
+- -->
        
-            <i id="fina" class="fa fa-caret-down"  style="float:right;" ></i>
-          </a>
-        </li>
-  
-          <div class="dropdown-container">
-          <li  *ngIf="user[0].roles=='admin'">  <a id="fina"style="font-size: small;" routerLink="all-rooms"><i id="fina" class="fa fa-list " >&nbsp;</i>Manage Room</a>
-          </li>
-
-          <li>
-            <a id="fina" *ngIf="user[0].roles=='admin'" style="font-size: small;"  routerLink="room-types"><i id="fina" class="fa fa-bed  " >&nbsp;</i>Room Types</a>
-          </li>
-
-          <li>
-            <a id="fina" style="font-size: small;"  routerLink="all-bookings"><i id="fina" class="fa fa-book " >&nbsp;</i>Booking</a>
-          </li>
-          <li>
-            <a id="fina" style="font-size: small;"  routerLink="payment"><i id="fina" class="fa fa-dollar " >&nbsp;</i>Payment</a>
-          </li>
-
-         
-    
-              <li><a id="fina"style="font-size: small;" routerLink="all-reservations"><i id="fina" class="fa fa-pencil " >&nbsp;</i>Reservation List</a></li>
           
-
-
-
-
-
-             <li >  
-              <a id="fina"style="font-size: small;" routerLink="room-status"><i id="fina" class="fa fa-info-circle " >&nbsp;</i>Room Status</a>
-
-              
-             </li>
+             <li >
+            <a id="fina"  *ngIf="user[0].roles=='admin'"   routerLink="customers" ><i id="fina" class="fa fa-user-circle " >&nbsp;</i><span>Customer&nbsp;</span>
+              <!-- <i id="fina" class="fa fa-caret-down"   ></i> -->
            
-          
-             <div class="dropdown-container-child">
-               <li><a id="fina"style="font-size: small;" routerLink="pages/user-list"><i id="fina" class="fa fa-check " >&nbsp;</i>Available</a></li>
-               <li> <a id="fina"style="font-size: small;" routerLink="pages/user-list"><i id="fina" class="fa fa-cancel " >&nbsp;</i>Occupied</a></li>
-              </div>
-              
- 
-             
-          
-          </div> 
-    
-    
+            </a>
+          </li> 
        
 
           <li  class="transparent" >
@@ -203,22 +162,17 @@ li{
             <li><a id="fina"style="font-size: small;" routerLink="department"><i id="fina" class="fa fa-building " >&nbsp;</i>Department</a></li>
              
   
-        <li   class="transparent">
+        <!-- <li   class="transparent">
         <a id="fina" ><i id="fina" class="fa fa-handshake-o fa-fw " style="color: lih;">&nbsp;</i><span>Todo &nbsp;</span>
-        <!-- <i id="fina" class="fa fa fa-caret-down"></i> -->
+        
         <i id="fina" class="fa fa-caret-down"  style="float:right;" ></i>
         </a>
         </li>
         <div class="dropdown-container">
         <li> <a id="fina"style="font-size: small;"  routerLink="/todo-list"><i id="fina" class="fa fa-list " >&nbsp;</i>Todo List</a></li> 
-      <!-- <li>
-          <a id="fina" style="font-size: small;"  routerLink="pages/add-todo"><i id="fina" class="fa fa-plus " style="color: lightgreen;">&nbsp;</i>New todo</a>
-        </li> -->
+\
 
-        <li>
-          <a id="fina" style="font-size: small;"  routerLink="/house-keeping"><i id="fina" class="fa fa-plus " style="color: lightgreen;">&nbsp;</i>House Keeping</a>
-        </li>
-        </div>
+        </div> -->
 
               
       <li   class ="transparent">
@@ -270,7 +224,10 @@ li{
                  Dates Between</a></li> 
 <!-- right -->
             </div>
-          
+            <li> <a id="fina"style="font-size: small;" *ngIf=" user[0].roles=='admin' " routerLink="/balance-sheet"><i id="fina" class="  fa fa-balance-scale"  >&nbsp;</i>Balance Sheet  
+          <!-- <i id="fina" class="fa fa-caret-down"  style="float:right;" ></i> -->
+        </a></li> 
+
         <li  class="transparent"> <a id="fina"style="font-size: small;" *ngIf=" user[0].roles=='admin' " routerLink="/general-ledger"><i id="fina" class="  fa fa-book"  >&nbsp;</i>General Ledger  
           <!-- <i id="fina" class="fa fa-caret-down"  style="float:right;" ></i> -->
         </a></li> 
@@ -335,11 +292,7 @@ li{
       
           </div>
 
-          <li >  
-            <a id="fina"style="font-size: small;" routerLink="add-chef"><i id="fina" class=" fa fa-spoon" >&nbsp;</i>Today's Food</a>
-
-            
-           </li>
+         
          
        <li   class="transparent">
           <a id="fina"*ngIf="user[0].roles=='admin'" ><i id="fina" class="fa fa-building fa-fw " style="color: lih;">&nbsp;</i><span>Inventory &nbsp;</span>
@@ -390,17 +343,17 @@ li{
               </a>
               </li>
           <div class="dropdown-container-child" id="dropdown">
-            <li>
+            <!-- <li>
             <a id="fina"style="font-size: small;" routerLink="/pages/room-list"  >Account Families
               
-            </a></li>
-          <li> <a id="fina"style="font-size: small;"  routerLink="/pages/add-room-type" >Account Groups</a></li> 
-          <li> <a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  >Account</a></li> 
-           <li> <a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  >Journal Voucher Codes</a></li>
-           <li><a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  >Import Chart of Accounts</a></li> 
+            </a></li> -->
+          <li> <a id="fina"style="font-size: small;"  routerLink="/account-group" ><i class="fa fa-briefcase"></i>      Account Groups</a></li> 
+          <li> <a id="fina" style="font-size: small;"  routerLink="/add-account"  > <i class="fa fa-bank"></i>  Account</a></li> 
+           <li> <a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  ><i class="fa fa-barcode"></i> Journal Voucher Codes</a></li>
+           <li><a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  ><i class="fa fa-chart"></i> Import Chart of Accounts</a></li> 
   
            <li><a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  >JV code assignment</a></li> 
-           <li> <a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  >Recalculate Account  Balance</a></li>
+           <li> <a id="fina" style="font-size: small;"  routerLink="/pages/add-room"  ><i class="fa fa-bank"></i> Recalculate Account  Balance</a></li>
            </div>
   
            
@@ -461,14 +414,14 @@ li{
           </div>
   
   
-          <li class="transparent">
+          <!-- <li class="transparent">
           <a id="fina"class=""  ><i id="fina" class="fa fa-tag fa-fw " style="color: lih;">&nbsp;</i><span>Food Cost  &nbsp;</span>
          
           </a></li>
-   
+    -->
           <div class="dropdown-container">
-          <li> <a id="fina"style="font-size: small;"  routerLink="/pages/payment-list">Extral meals</a></li> 
-           <li><a id="fina"style="font-size: small;"  routerLink="/pages/payment-list">Staff food  cost</a></li> 
+          <!-- <li> <a id="fina"style="font-size: small;"  routerLink="/pages/payment-list">Extral meals</a></li> 
+           <li><a id="fina"style="font-size: small;"  routerLink="/pages/payment-list">Staff food  cost</a></li>  -->
            <li> <a id="fina"style="font-size: small;"  routerLink="/pages/payment-list">Expense  accounts</a></li>
            
           </div>

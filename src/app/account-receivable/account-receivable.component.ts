@@ -149,26 +149,24 @@ export class AccountReceivableComponent implements OnInit {
     
         const d = { date: selectedDate };
     
-        // Fetch data for payments (room charges)
-        const paymentRes = await this.paymentService.searchPaymentDates(d);
-        this.paymentList = paymentRes || [];
+        
+        // const paymentRes = await this.paymentService.searchPaymentDates(d);
+        // this.paymentList = paymentRes || [];
 
         
-        // Sum up the balance of each payment
-        this.totalAmount = this.paymentList.reduce((sum, item) => sum + parseFloat(item.amount), 0);
+      
+        // this.totalAmount = this.paymentList.reduce((sum, item) => sum + parseFloat(item.amount), 0);
     
-        // Fetch data for purchases (optional)
-        const purchaseRes = await this.paymentService.searchPaymentDates(d);
-        this.purchaseList = purchaseRes || [];
+       
+        // const purchaseRes = await this.paymentService.searchPaymentDates(d);
+        // this.purchaseList = purchaseRes || [];
     
-        // Sum up the total cost of each purchase
-        this.totalPurchases = this.purchaseList.reduce((sum, item) => sum + parseFloat(item.total_cost), 0);
-    
-        // Compute the total balance
-        this.balance = this.paymentList.reduce((sum, item) => sum + parseFloat(item.balance), 0);
         
-        // Compute the balance (total amount owed - payments made)
-        // this.balance = this.totalAmount - this.totalPurchases;  // Adjust this as needed for your calculation logic
+        // this.totalPurchases = this.purchaseList.reduce((sum, item) => sum + parseFloat(item.total_cost), 0);
+    
+        // this.balance = this.paymentList.reduce((sum, item) => sum + parseFloat(item.balance), 0);
+        
+        
         
       } catch (err) {
         console.error("Error fetching data:", err.message || err);
