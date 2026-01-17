@@ -85,6 +85,8 @@ import { CustomersComponent } from './customers/customers.component';
 import { AccountGroupComponent } from './account-group/account-group.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { BalancesheetComponent } from './balancesheet/balancesheet.component';
+import { SalaryTemplateComponent } from './salary-template/salary-template.component';
+import { SalaryPaymentComponent } from './salary-payment/salary-payment.component';
 // import { AllReservationsComponent } from './admin/all-reservations/all-reservations.component';
 
 
@@ -100,46 +102,9 @@ import { BalancesheetComponent } from './balancesheet/balancesheet.component';
         ViewDrinkOrderComponent,
         CheckTodaysOrdersComponent,
         CheckDrinkOrdersComponent,
-
-      
-    
-     
-       
-        
-       
   
-       
-      
-      
       
 
-     
-      
-     
-      
-       
-      
-     
-  
-   
- 
-
-  
-
-
-
-
-
-
-
-  
-   
-
- 
-
-
-
-    // RoomTypesComponent,
     
   ],
   imports: [

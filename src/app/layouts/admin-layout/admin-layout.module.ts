@@ -73,6 +73,8 @@ import { CustomersComponent } from 'app/customers/customers.component';
 import { AccountGroupComponent } from 'app/account-group/account-group.component';
 import { AddAccountComponent } from 'app/add-account/add-account.component';
 import { BalancesheetComponent } from 'app/balancesheet/balancesheet.component';
+import { SalaryTemplateComponent } from 'app/salary-template/salary-template.component';
+import { SalaryPaymentComponent } from 'app/salary-payment/salary-payment.component';
 
 
     
@@ -138,7 +140,8 @@ import { BalancesheetComponent } from 'app/balancesheet/balancesheet.component';
     DailyIncomeReportDatesBetweenComponent,
     ItemComponent,ItemCategoryComponent,ItemGroupComponent,ItemFamilyComponent,FinancialOverviewComponent,AllSessionsComponent,
     StoreComponent,StockComponent,DepartmentsComponent,TransferStockComponent,VendorComponent,PurchaseOrderComponent,ReturnRequestComponent,
-    AddEventPaymentComponent,OutsideStockSideComponent,CanceledOrderComponent,CustomersComponent,AccountGroupComponent,AddAccountComponent,BalancesheetComponent
+    AddEventPaymentComponent,OutsideStockSideComponent,CanceledOrderComponent,CustomersComponent,AccountGroupComponent,AddAccountComponent,BalancesheetComponent,SalaryTemplateComponent,
+    SalaryPaymentComponent
 
 
 

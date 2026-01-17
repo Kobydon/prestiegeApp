@@ -203,10 +203,18 @@ li{
            
           </a></li>
 
-          <li   >
-            <a id="fina" routerLink="add-event-payment" ><i id="fina" class="fa fa-calendar"  >&nbsp;</i><span>Event&nbsp;</span>
-             
-            </a></li>
+          <li class="transparent"> <a id="fina"style="font-size: small;" *ngIf="user[0].roles=='admin' "  ><i id="fina" class=" fa fa-dollar " >&nbsp;</i>
+          PayRoll </a></li> 
+
+            <div class="dropdown-container">
+              <li class="transparent"> <a id="fina"style="font-size: small;" *ngIf="user[0].roles=='admin' || user[0].roles=='accountant'"   routerLink="/salary-template"><i id="fina" class=" fa fa-calculator" >&nbsp;</i>
+                Salary Template</a></li> 
+
+                <li class="transparent"> <a id="fina"style="font-size: small;" *ngIf="user[0].roles=='admin'|| user[0].roles=='accountant'"  routerLink="/salary-payment"><i id="fina" class=" fa fa-money " >&nbsp;</i>
+                 Make Payment</a></li> 
+<!-- right -->
+            </div>
+           
          
 
           <li>  <a id="fina"style="font-size: small;"  *ngIf="user[0].roles=='admin' "   routerLink="/gop-deduction" >

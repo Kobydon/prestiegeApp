@@ -81,7 +81,8 @@ export const ROUTES: RouteInfo[] = [
       { path: '/account-group',    title: ' Account-group  ',        icon:'nc-caps-small', class: '' },
        { path: '/account',    title: ' Account-group  ',        icon:'nc-caps-small', class: '' },
         { path: '/balance-sheet',    title: ' Balance-sheet  ',        icon:'nc-caps-small', class: '' },
-
+           { path: '/salary-template',    title: ' Salary Template  ',        icon:'nc-caps-small', class: '' },
+      { path: '/salary-payment',    title: ' Salary Payment  ',        icon:'nc-caps-small', class: '' },
    
 
 ];

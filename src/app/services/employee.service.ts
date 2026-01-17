@@ -145,5 +145,47 @@ getroom_number():Observable<any[]>{
 	  return of({});
   }
   
-  
+  createSalaryTemplate(data: any) {
+  return this.http.post(
+    this.employeeUrl + '/employee/create_salary_template',
+    data
+  );
+}
+
+getSalaryTemplates() {
+  return this.http.get<any[]>(
+    this.employeeUrl + '/employee/get_salary_templates'
+  );
+}
+
+getSalaryTemplate(id: number) {
+  return this.http.get<any>(
+    this.employeeUrl + '/employee/get_salary_template/' + id
+  );
+}
+
+updateSalaryTemplate(id: number, data: any) {
+  return this.http.put(
+    this.employeeUrl + '/employee/update_salary_template/' + id,
+    data
+  );
+}
+
+deleteSalaryTemplate(id: number) {
+  return this.http.delete(
+    this.employeeUrl + '/employee/delete_salary_template/' + id
+  );
+}
+bulkPaySalary(data: any) {
+  return this.http.post(
+    this.employeeUrl + '/employee/bulk_pay_salary',
+    data
+  );
+}
+
+getSalaryPaymentHistory() {
+  return this.http.get<any[]>(
+    this.employeeUrl + '/employee/salary_payment_history'
+  );
+}
 }
