@@ -10,12 +10,12 @@ import { ReplaySubject } from 'rxjs';
 export class CartService {
   public cartItems = new BehaviorSubject<any[]>([]);
   cartItems$ = this.cartItems.asObservable();
-  public apiUrl = 'http://127.0.0.1:5000/guest/create_orders';
-  public apiUrl3 = 'http://127.0.0.1:5000/guest/create_orders_all';
-  public apiUrl4 = 'http://127.0.0.1:5000/guest/create_orders_two_all';
-  public apiUrl2 = 'http://127.0.0.1:5000/guest/create_orders_two';
-  public orderUrl = 'http://127.0.0.1:5000/guest';
-  public apiUrl5 = 'http://127.0.0.1:5000/guest/credit';
+  public apiUrl = 'https://backend.marqsewafoundations.org/guest/create_orders';
+  public apiUrl3 = 'https://backend.marqsewafoundations.org/guest/create_orders_all';
+  public apiUrl4 = 'https://backend.marqsewafoundations.org/guest/create_orders_two_all';
+  public apiUrl2 = 'https://backend.marqsewafoundations.org/guest/create_orders_two';
+  public orderUrl = 'https://backend.marqsewafoundations.org/guest';
+  public apiUrl5 = 'https://backend.marqsewafoundations.org/guest/credit';
   
   
   

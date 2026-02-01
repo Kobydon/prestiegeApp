@@ -235,11 +235,18 @@
   [disabled]="cartItems.length === 0 || !(cashier || admin)">
   Pay  (₵{{ total | number: '1.2-2' }})
 </button> -->
-<button class="btn btn-danger"
+<!-- <button class="btn btn-danger" disabled="">
 
   (click)="Credit()"
-  [disabled]="cartItems.length === 0 || !(cashier || admin)">
+ >
   Credit  (₵{{ total | number: '1.2-2' }})
+</button> -->
+
+<button class="btn btn-success"
+  *ngIf="!isHeldOrder"
+  (click)="payOrder()"
+  [disabled]="cartItems.length === 0 || !(cashier || admin)">
+  Pay (₵{{ total | number: '1.2-2' }})
 </button>
 <button class="btn btn-info"
 
@@ -268,7 +275,7 @@
   <li *ngFor="let cart of heldCarts" class="list-group-item d-flex justify-content-between align-items-center">
     <div>
       <!-- <input type="checkbox" (change)="toggleSelection(cart.id)"> -->
-      <span class="ms-2">Cart #{{ cart.id }} - ₵{{ cart.total | number: '1.2-2' }} (Table {{cart.table}})</span>
+      <span class="ms-2">Cart #{{ cart.id }} - ₵{{ cart.total | number: '1.2-2' }}</span>
     </div>
     <div class="btn-group">
 

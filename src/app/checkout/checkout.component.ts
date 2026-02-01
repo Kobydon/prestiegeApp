@@ -381,7 +381,8 @@ loadHeldCartAll(): void {
       cashier :this.createForm.value.cashier,
       table: this.createForm.value.table,
        discount:this.createForm.value.discount,
-       customer:this.createForm.value.customer
+       customer:this.createForm.value.customer,
+       phone :this.createForm.value.phone
     };
 
     console.log("🛒 Cart Items Being Sent:", JSON.stringify(orderData.cartItems, null, 2));

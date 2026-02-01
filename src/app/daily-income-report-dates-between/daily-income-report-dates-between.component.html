@@ -27,7 +27,7 @@
             style="max-width: 300px;"
           />
         </div>
-        <label for="">Filter By Waiter</label>
+        <label for="">Filter By Attendant</label>
         <!-- <select formControlName="employee" id="" (ngModelChange)="findWaiter()"  disabled="">
           <option  *ngFor="let item of users" value="{{item.firstname +' ' +item.lastname}}">{{item.firstname +' ' +item.lastname}}</option>
           
@@ -54,19 +54,19 @@
         </select>
 
         
-        <label for="">Filter By Department</label>
-        <select formControlName="barrest" id="" (ngModelChange)="findDepartment()">
+        <!-- <label for="">Filter By Department</label>
+        <select formControlName="barrest" id="" (ngModelChange)="findDepartment()" >
           <option value="drink">Bar</option>
           <option value="food">Restaurant</option>
           
         
         
         </select>
-     
+      -->
 
 
   <label for="">Filter By Category</label>
-        <select formControlName="categos" id="" (ngModelChange)="findCategory()">
+        <select formControlName="categos" id="" (ngModelChange)="findCategory()" >
           <option *ngFor="let item of categoryList" value="{{item.name}}">{{item.name}}</option>
          
           
@@ -85,7 +85,7 @@
           Download PDF
         </button>
         <button class="btn btn-success" (click)="filterByMostPayment()">Filter by Most Payment</button>
-        <button class="btn btn-info" (click)="filterByMostPaymentCustomer()">Filter by Most Customer</button>
+        <button class="btn btn-info" (click)="filterByMostPaymentCustomer()">Filter by Most Payment</button>
       </div>
 
       <!-- Daily Report Display -->
@@ -95,6 +95,9 @@
       >
         <header class="text-center mb-4">
           <!-- <h2>Rismork Enterprice </h2> -->
+             <!-- <div class="logo-wrapper">
+    <img src="../../../assets/img/asempa_logo.jpg" alt="company_logo" >
+  </div> -->
           <p>Income and Expenditure Report</p>
           <p>
             Date: {{ createForm.value.dates | date: 'MMMM d, yyyy' }} to
@@ -113,22 +116,17 @@
                   <th>Amount (₵)</th>
                   <th>Discount</th>
                   <th>Customer</th>
-                  <th>Phone</th>
                   <th>Cashier</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of order.items">
-                <td>{{ item.name }}</td>
-                <td>{{ item.qty }}</td>
-                <td>GH₵{{ item.price }}</td>
-                <td>GH₵{{ item.qty * item.price }}</td>
-                <td>{{ order.waiter }}</td>
-                <td>{{ order.customer }}</td>
-                <td>{{ order.phone }}</td>
-                <td>{{ order.status }}</td>
-              </tr>
-
+                <tr *ngFor="let item of incomeReport">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.amount | currency: '₵' }}</td>
+                  <td>{{ item.discount }}</td>
+                  <td>{{ item.customer }}</td>
+                  <td>{{item.cashier}}</td>
+                </tr>
               </tbody>
               <tfoot>
                 <tr class="font-weight-bold">

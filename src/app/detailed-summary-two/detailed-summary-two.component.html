@@ -55,66 +55,24 @@
   
             <!-- Reports Section -->
             <div *ngIf="paymentForm.value.datetwo" id="excel-table">
-              <h1>From {{paymentForm.value.dates}} to  {{paymentForm.value.datetwo}} </h1>
-        
-              <!-- <h5 class="text-gray-500">Room Report</h5>
-              <p>Bookings</p>
-              <table class="table table-bordered" >
-                <thead class="table-light">
-                  <tr class="bg-secondary text-white">
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Balance</th>
-                    <th>Discount</th>
-                    <th>Method</th>
-                    <th>Room Type</th>
-                    <th>Check In</th>
-                    <th>Check Out</th>
-                 
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let payment of paymentList">
-                    <td>{{ payment.name }}</td>
-                    <td>GH₵{{ payment.amount }}</td>
-                    <td>GH₵{{ payment.balance }}</td>
-                    <td>{{ payment.discount }}%</td>
-                    <td>{{ payment.method }}</td>
-                    <td>{{ payment.room_type }}</td>
-                    <td>{{ payment.checkin_date | date  }}</td>
-                    <td>{{ payment.checkout_date | date }}</td>
-                  
-                  </tr>
-                  <tr>
-                    <td colspan="9" class="text-end bg-light">
-                      <strong>Daily Total: GH₵{{ totalAmount | number }}</strong>
-                    </td>
-                  </tr>
-                </tbody>
-              </table> -->
-<!--   
-              <p>Statistics</p>
-              <table class="table table-bordered">
-                <thead class="table-light">
-                  <tr class="bg-secondary text-white">
-                    <th>Rooms Occupied</th>
-                    <th>Rooms Available</th>
-                    <th>Total Guests</th>
-                    <th>Occupancy (%)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{{ totalOcccupiedRooms }}</td>
-                    <td>{{ totalAvailableRooms }}</td>
-                    <td>{{ rooms.length }}</td>
-                    <td>{{ occupancy | number: '1.2-2' }}%</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="report-header">
+                <h3><span>Longford</span></h3>
+  <!-- <div class="logo-wrapper">
+    <img src="../../../assets/img/asempa_logo.jpg" alt="company_logo" >
+  </div>
    -->
+  <div class="report-title">
+    <h2>Detailed Summary Report</h2>
+    <p>
+      From <strong>{{ paymentForm.value.dates }}</strong>
+      to <strong>{{ paymentForm.value.datetwo }}</strong>
+    </p>
+  </div>
+</div>
+
+              
   
-              <p>Shop Sales</p>
+              <p> Sales</p>
               <table class="table table-bordered">
                 <thead class="table-light">
                   <tr class="bg-secondary text-white">
@@ -154,11 +112,9 @@
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Subtotal</th>
-                    <th>Waiter</th>
-                    <th>Food Was Confirmed By</th>
-                    <th>Date | Time (Food)</th>
-                    <th>Drink Was Confirmed By</th>
-                    <th>Date | Time (Drink)</th>
+                    <th>Attendant</th>
+                    <th> Was Confirmed By</th>
+                    <th>Date | Time</th>
                     <th>Actual Date | Time</th>
 
 
@@ -182,8 +138,6 @@
                       <td>{{ order.waiter }}</td>
                       <td>{{order.food_confirm}}</td>
                       <td>{{order.food_confirm_at}}</td>
-                      <td>{{order.drink_confirm}}</td>
-                      <td>{{order.drink_confirm_at}}</td>
                       <td>{{order.created_at}}</td>
                       <td>{{ order.status }}</td>
                     </tr>
@@ -237,24 +191,6 @@
               </table>
   
            
-              <p>Cook For the Day</p>
-              <table class="table table-bordered">
-                <thead class="table-light">
-                  <tr class="bg-secondary text-white">
-                    <th>Name</th>
-                    <th>Food Prepared</th>
-                 
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of chefList">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.food }}</td>
-                
-                  </tr>
-                </tbody>
-              </table>
-  
               <!-- RefundschefList -->
               <h5 class="text-gray-500 mt-4">Accounts Report</h5>
   
